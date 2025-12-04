@@ -1,9 +1,9 @@
+// log-ip.js
 exports.handler = async (event, context) => {
-  const ip = event.headers["client-ip"] 
-          || event.headers["x-forwarded-for"] 
-          || "unknown";
+  // pobranie IP z nagłówków
+  const ip = event.headers["x-nf-client-connection-ip"] || event.headers["x-forwarded-for"] || "unknown";
 
-  console.log("🔥 Nowe wejście! IP:", ip);
+  console.log("Visitor IP:", ip); // to powinno iść do logów Netlify
 
   return {
     statusCode: 200,
